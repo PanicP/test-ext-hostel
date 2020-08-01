@@ -1,0 +1,1 @@
+export { RegisterPanel } from './RegisterPanel'
