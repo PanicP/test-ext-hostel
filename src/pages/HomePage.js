@@ -1,5 +1,10 @@
 import React from 'react'
+import { ClassicWithSidebarLayout } from '../components/layout'
 
 export const HomePage = () => {
-    return <div>aaaaaaaaaa</div>
+    return (
+        <ClassicWithSidebarLayout>
+            <div>aaaaaa</div>
+        </ClassicWithSidebarLayout>
+    )
 }
