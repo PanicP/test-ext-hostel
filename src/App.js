@@ -1,8 +1,9 @@
 import React from 'react'
 import './App.css'
+import { HomePage } from './pages'
 
 const App = () => {
-    return <div className="App"></div>
+    return <HomePage />
 }
 
 export default App
