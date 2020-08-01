@@ -2,10 +2,10 @@ import React from 'react'
 import { ClassicWithSidebarLayout } from '../components/layout'
 import { HostelDetail } from '../components/hostel'
 
-export const HostelDetailPage = () => {
+export const HostelDetailPage = ({ match, location }) => {
     return (
         <ClassicWithSidebarLayout>
-            <HostelDetail />
+            <HostelDetail id={ match.params.id }/>
         </ClassicWithSidebarLayout>
     )
 }

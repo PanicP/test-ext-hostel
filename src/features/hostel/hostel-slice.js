@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { isEmpty } from 'lodash'
 
 const initialState = {
     data: [],
+    displayHostel: {},
 }
 
 export const hostelSlice = createSlice({
@@ -11,9 +13,14 @@ export const hostelSlice = createSlice({
         setHostels: (state, action) => {
             state.data = action.payload.data
         },
+        setDisplayHostel: (state, action) => {
+            state.displayHostel = !isEmpty(state.data)
+                ? state.data.filter((hostel) => hostel.id === action.payload.id)
+                : {}
+        },
     },
 })
 
-export const { setHostels } = hostelSlice.actions
+export const { setHostels, setDisplayHostel } = hostelSlice.actions
 
 export default hostelSlice.reducer

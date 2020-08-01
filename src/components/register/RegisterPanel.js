@@ -10,9 +10,9 @@ import { PhoneNumberField } from './PhoneNumberField'
 import { UserNameField } from './UserNameField'
 import { PasswordField } from './PasswordField'
 import { ConfirmPasswordField } from './ConfirmPasswordField'
-import { callRegis } from '../../features/auth/authApi'
 import { history } from '../../history'
 import { Redirect } from 'react-router-dom'
+import { callRegis } from '../../features/auth/auth-api'
 
 export const RegisterPanel = () => {
     const [form] = Form.useForm()

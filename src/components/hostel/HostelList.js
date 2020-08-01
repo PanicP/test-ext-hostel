@@ -1,7 +1,9 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect } from 'react'
 import { callGetHostels } from '../../features/hostel/hostel-api'
 import { useHostel } from '../../features/hostel/hostel-store'
-import { Table, Space } from 'antd'
+import { Table, Space, DatePicker } from 'antd'
+import moment from 'moment'
 
 export const HostelList = () => {
     const { handleSetHostels, hostelsData } = useHostel()
@@ -14,18 +16,30 @@ export const HostelList = () => {
         getHostels()
     }, [])
 
+    const disabledDate = (current) => {
+        return current < moment().endOf('day')
+    }
+
+    const handleSelectHostel = ({ data }) => {
+        console.log(data)
+    }
+
+    const handleOnChangeDate = (date, dateString, text, record) => {
+        console.log(date, dateString, text, record)
+    }
+
     const columns = [
         {
             title: 'ID',
             dataIndex: 'id',
             key: 'id',
-            width: '100px'
+            width: '50px',
         },
         {
             title: 'Hostel Name',
             dataIndex: 'name',
             key: 'name',
-            width: '400px'
+            width: '150px',
         },
         {
             title: 'Description',
@@ -36,16 +50,41 @@ export const HostelList = () => {
             title: 'Price',
             dataIndex: 'price',
             key: 'price',
-            width: '200px'
+            width: '100px',
         },
         {
-            title: 'Action',
+            title: 'From',
+            key: 'fromDate',
+            width: '200px',
+            render: (text, record) => (
+                <DatePicker allowClear disabledDate={disabledDate} onChange={ (date, dateString) => handleOnChangeDate(date, dateString, text, record) }/>
+            ),
+        },
+        {
+            title: 'To',
+            key: 'toDate',
+            width: '200px',
+            render: (text, record) => (
+                <DatePicker allowClear disabledDate={disabledDate} />
+            ),
+        },
+        {
+            title: '',
             key: 'action',
             width: '200px',
             render: (text, record) => (
                 <Space size="middle">
-                    <a>Invite {record.name}</a>
-                    <a>Delete</a>
+                    <a
+                        onClick={() =>
+                            handleSelectHostel({
+                                data: {
+                                    ...record,
+                                },
+                            })
+                        }
+                    >
+                        Booking {record.name}
+                    </a>
                 </Space>
             ),
         },
@@ -53,7 +92,6 @@ export const HostelList = () => {
 
     return (
         <div>
-            {/* { console.log( hostelsData) } */}
             <Table dataSource={hostelsData} columns={columns} />
         </div>
     )

@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Form, Input, Button } from 'antd'
-import { callAuth } from '../../features/auth/authApi'
 import { history } from '../../history'
 import { Redirect } from 'react-router-dom'
+import { callAuth } from '../../features/auth/auth-api'
 
 export const LoginPanel = () => {
     const [isAuthed, setIsAuthed] = useState(localStorage.getItem('authToken'))
