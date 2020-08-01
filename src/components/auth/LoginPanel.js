@@ -1,16 +1,25 @@
 import React, { useState, useEffect } from 'react'
 import { Form, Input, Button } from 'antd'
+import { callAuth } from '../../features/auth/authApi'
+import { history } from '../../history'
+import { Redirect } from 'react-router-dom'
 
 export const LoginPanel = () => {
-    const [isLogin, setIsLogin] = useState(false)
+    const [isLogin, setIsLogin] = useState(localStorage.getItem('authToken'))
 
-    const onFinish = (values) => {
-        
+    const onFinish = async (values) => {
+        const isLoginSucceeded = await callAuth()
+        setIsLogin(isLoginSucceeded)
+        if (isLoginSucceeded) {
+            history.push('/')
+        }
     }
 
     const onFinishFailed = (errorInfo) => {}
 
-    return (
+    return isLogin ? (
+        <Redirect to="/"></Redirect>
+    ) : (
         <Form
             {...layout}
             name="basic"
