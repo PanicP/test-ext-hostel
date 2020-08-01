@@ -7,3 +7,10 @@
     height: 500px;
 }
 
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+    background-color: white !important;
+}
+
+.anticon {
+    color: #595959;
+}

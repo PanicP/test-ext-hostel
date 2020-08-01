@@ -4,12 +4,14 @@ import {
     UserOutlined,
     UploadOutlined,
     VideoCameraOutlined,
+    LoginOutlined,
+    LogoutOutlined,
 } from '@ant-design/icons'
+import { history } from '../../history'
 
 const { Header, Content, Footer, Sider } = Layout
 
 export const ClassicWithSidebarLayout = ({ children }) => {
-
     const [isCollapsed, setIsCollapsed] = useState(true)
 
     return (
@@ -34,14 +36,27 @@ export const ClassicWithSidebarLayout = ({ children }) => {
                         mode="inline"
                         defaultSelectedKeys={['4']}
                     >
-                        <Menu.Item key="1" icon={<UserOutlined />}>
+                        <Menu.Item key="1" className="sider-item" icon={<UserOutlined />}>
                             Username
                         </Menu.Item>
-                        <Menu.Item key="2" icon={<VideoCameraOutlined />}>
+                        <Menu.Item key="2" className="sider-item" icon={<VideoCameraOutlined />}>
                             Register
                         </Menu.Item>
-                        <Menu.Item key="3" icon={<UploadOutlined />}>
+                        <Menu.Item key="3" className="sider-item" icon={<LoginOutlined />} onClick={() => {
+                                history.push('/login')
+                            }}>
                             Sign In
+                        </Menu.Item>
+                        <Menu.Item
+                            key="4"
+                            className="sider-item"
+                            icon={<LogoutOutlined />}
+                            onClick={() => {
+                                localStorage.removeItem('authToken')
+                                history.push('/login')
+                            }}
+                        >
+                            Sign Out
                         </Menu.Item>
                     </Menu>
                 </Sider>
@@ -71,16 +86,22 @@ export const ClassicWithSidebarLayout = ({ children }) => {
                         </p>
                     </Header>
                     <Content
-                        style={{ margin: '64px 0 0', overflow: 'initial', border: '2px solid orange' }}
+                        style={{
+                            margin: '64px 0 0',
+                            overflow: 'initial',
+                            border: '2px solid orange',
+                        }}
                     >
                         <div
                             className="site-layout-background"
                             style={{ padding: 24, textAlign: 'center' }}
                         >
-                            { children }
+                            {children}
                         </div>
                     </Content>
-                    <Footer style={{ textAlign: 'center', border: '2px solid red' }}>
+                    <Footer
+                        style={{ textAlign: 'center', border: '2px solid red' }}
+                    >
                         Footer
                     </Footer>
                 </Layout>
