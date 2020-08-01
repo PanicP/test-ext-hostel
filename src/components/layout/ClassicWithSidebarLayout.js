@@ -1,9 +1,9 @@
 import React, { useState, Fragment } from 'react'
 import { Layout, Menu } from 'antd'
 import {
-    UserOutlined,
-    UploadOutlined,
-    VideoCameraOutlined,
+    HomeOutlined,
+    BookOutlined,
+    EditOutlined,
     LoginOutlined,
     LogoutOutlined,
 } from '@ant-design/icons'
@@ -13,6 +13,7 @@ const { Header, Content, Footer, Sider } = Layout
 
 export const ClassicWithSidebarLayout = ({ children }) => {
     const [isCollapsed, setIsCollapsed] = useState(true)
+    const [isAuthed, setIsAuthed] = useState(localStorage.getItem('authToken'))
 
     return (
         <Fragment>
@@ -31,40 +32,81 @@ export const ClassicWithSidebarLayout = ({ children }) => {
                     }}
                 >
                     <div className="logo" />
-                    <Menu
-                        theme="light"
-                        mode="inline"
-                        defaultSelectedKeys={['4']}
-                    >
-                        <Menu.Item key="1" className="sider-item" icon={<UserOutlined />}>
-                            Username
-                        </Menu.Item>
-                        <Menu.Item key="2" className="sider-item" icon={<VideoCameraOutlined />}>
-                            Register
-                        </Menu.Item>
-                        <Menu.Item key="3" className="sider-item" icon={<LoginOutlined />} onClick={() => {
-                                history.push('/login')
-                            }}>
-                            Sign In
-                        </Menu.Item>
-                        <Menu.Item
-                            key="4"
-                            className="sider-item"
-                            icon={<LogoutOutlined />}
-                            onClick={() => {
-                                localStorage.removeItem('authToken')
-                                history.push('/login')
-                            }}
+                    {!isAuthed ? (
+                        <Menu
+                            theme="light"
+                            mode="inline"
+                            defaultSelectedKeys={['4']}
                         >
-                            Sign Out
-                        </Menu.Item>
-                    </Menu>
+                            <Menu.Item
+                                key="1"
+                                icon={<HomeOutlined />}
+                                onClick={() => {
+                                    history.push('/')
+                                }}
+                            >
+                                Home
+                            </Menu.Item>
+
+                            <Menu.Item
+                                key="2"
+                                icon={<EditOutlined />}
+                                onClick={() => {
+                                    history.push('/register')
+                                }}
+                            >
+                                Register
+                            </Menu.Item>
+                            <Menu.Item
+                                key="3"
+                                icon={<LoginOutlined />}
+                                onClick={() => {
+                                    history.push('/login')
+                                }}
+                            >
+                                Sign In
+                            </Menu.Item>
+                        </Menu>
+                    ) : (
+                        <Menu
+                            theme="light"
+                            mode="inline"
+                            defaultSelectedKeys={['4']}
+                        >
+                            <Menu.Item
+                                key="1"
+                                icon={<HomeOutlined />}
+                                onClick={() => {
+                                    history.push('/')
+                                }}
+                            >
+                                Home
+                            </Menu.Item>
+
+                            <Menu.Item
+                                key="2"
+                                icon={<BookOutlined />}
+                                onClick={() => {
+                                    history.push('/hostel-booking-list')
+                                }}
+                            >
+                                Booking List
+                            </Menu.Item>
+                            <Menu.Item
+                                key="3"
+                                icon={<LogoutOutlined />}
+                                onClick={() => {
+                                    localStorage.removeItem('authToken')
+                                    history.push('/login')
+                                }}
+                            >
+                                Sign Out
+                            </Menu.Item>
+                        </Menu>
+                    )}
                 </Sider>
+
                 <Layout className="site-layout" style={{ marginLeft: 80 }}>
-                    {/* <Header
-                        className="site-layout-background"
-                        style={{ padding: 0 }}
-                    /> */}
                     <Header
                         style={{
                             background: '#fff',
