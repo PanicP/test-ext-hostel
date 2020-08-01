@@ -20,7 +20,6 @@ export const callRegis = async () => {
             'https://42a3c039-1cf6-4bd8-b159-07129942aa50.mock.pstmn.io/register'    
         )
         if (res) {
-            console.log(res, res.data, res.data.token)
             localStorage.setItem('authToken', res.data.token)
             return true
         }

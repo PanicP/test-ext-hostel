@@ -5,11 +5,11 @@ import { history } from '../../history'
 import { Redirect } from 'react-router-dom'
 
 export const LoginPanel = () => {
-    const [isLogin, setIsLogin] = useState(localStorage.getItem('authToken'))
+    const [isAuthed, setIsAuthed] = useState(localStorage.getItem('authToken'))
 
     const onFinish = async (values) => {
         const isLoginSucceeded = await callAuth()
-        setIsLogin(isLoginSucceeded)
+        setIsAuthed(isLoginSucceeded)
         if (isLoginSucceeded) {
             history.push('/')
         }
@@ -17,7 +17,7 @@ export const LoginPanel = () => {
 
     const onFinishFailed = (errorInfo) => {}
 
-    return isLogin ? (
+    return isAuthed ? (
         <Redirect to="/"></Redirect>
     ) : (
         <Form

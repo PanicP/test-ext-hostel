@@ -16,11 +16,11 @@ import { Redirect } from 'react-router-dom'
 
 export const RegisterPanel = () => {
     const [form] = Form.useForm()
-    const [isLogin, setIsLogin] = useState(localStorage.getItem('authToken'))
+    const [isAuthed, setIsAuthed] = useState(localStorage.getItem('authToken'))
 
     const onFinish = async (values) => {
         const isLoginSucceeded = await callRegis({ data: values })
-        setIsLogin(isLoginSucceeded)
+        setIsAuthed(isLoginSucceeded)
         if (isLoginSucceeded) {
             history.push('/')
         }
@@ -28,7 +28,7 @@ export const RegisterPanel = () => {
 
     const onFinishFailed = (errorInfo) => {}
 
-    return isLogin ? (
+    return isAuthed ? (
         <Redirect to="/"></Redirect>
     ) : (
         <Form
