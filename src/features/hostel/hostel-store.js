@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useCallback, useMemo, useLayoutEffect, useEffect } from 'react'
 import { callGetHostels } from './hostel-api'
-import { setHostels, setDisplayHostel, setIsBooked } from './hostel-slice'
+import { setHostels, setDisplayHostel, setIsBooked, setFromDate, setToDate } from './hostel-slice'
 import { hostelsSelector, displayHostelSelector, bookedHostelSelector } from './hostel-selector'
 
 export const useHostel = () => {
@@ -34,6 +34,20 @@ export const useHostel = () => {
         },
         [dispatch]
     )
+
+    const handleSetFromDate = useCallback(
+        ({ id, fromDate }) => {
+            dispatch(setFromDate({ id, fromDate }))
+        },
+        [dispatch]
+    )
+
+    const handleSetToDate = useCallback(
+        ({ id, toDate }) => {
+            dispatch(setToDate({ id, toDate }))
+        },
+        [dispatch]
+    )
     
     return {
         bookedHostelData,
@@ -42,5 +56,7 @@ export const useHostel = () => {
         handleSetDisplayHostel,
         handleSetHostels,
         handleSetIsBooked,
+        handleSetFromDate,
+        handleSetToDate,
     }
 }

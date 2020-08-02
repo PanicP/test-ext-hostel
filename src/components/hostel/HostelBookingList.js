@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useEffect, Fragment } from 'react'
-import { callGetHostels } from '../../features/hostel/hostel-api'
+import React, {  Fragment } from 'react'
 import { useHostel } from '../../features/hostel/hostel-store'
-import { Table, Space, DatePicker } from 'antd'
+import { Table, Space } from 'antd'
 import moment from 'moment'
 import { history } from '../../history'
 
@@ -48,13 +47,13 @@ export const HostelBookingList = () => {
             title: 'From',
             key: 'fromDate',
             width: '200px',
-            render: (text, record) => <p>{}</p>,
+            render: (text, record) => <p>{moment.unix(record.fromDate).format('MMM DD, YYYY')}</p>,
         },
         {
             title: 'To',
             key: 'toDate',
             width: '200px',
-            render: (text, record) => <p>{}</p>,
+            render: (text, record) => <p>{moment.unix(record.toDate).format('MMM DD, YYYY')}</p>,
         },
         {
             title: '',

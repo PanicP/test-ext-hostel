@@ -122,9 +122,10 @@ export const ClassicWithSidebarLayout = ({ children }) => {
                             style={{
                                 width: 'fit-content',
                                 margin: '0 75px 0 0',
+                                fontSize: '30px',
                             }}
                         >
-                            This is Header
+                            Hostels Picker
                         </p>
                     </Header>
                     <Content
@@ -141,11 +142,11 @@ export const ClassicWithSidebarLayout = ({ children }) => {
                             {children}
                         </div>
                     </Content>
-                    <Footer
+                    {/* <Footer
                         style={{ textAlign: 'center', border: '2px solid red' }}
                     >
                         Footer
-                    </Footer>
+                    </Footer> */}
                 </Layout>
             </Layout>
         </Fragment>

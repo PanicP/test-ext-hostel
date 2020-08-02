@@ -7,7 +7,7 @@ import moment from 'moment'
 import { history } from '../../history'
 
 export const HostelList = () => {
-    const { handleSetHostels, hostelsData, handleSetIsBooked } = useHostel()
+    const { handleSetHostels, hostelsData, handleSetIsBooked, handleSetFromDate, handleSetToDate } = useHostel()
 
     useEffect(() => {
         const getHostels = async () => {
@@ -26,8 +26,19 @@ export const HostelList = () => {
         handleSetIsBooked({ id: data.id })
     }
 
-    const handleOnChangeDate = (date, dateString, text, record) => {
-        console.log(date, dateString, text, record)
+    const handleOnChangeDate = ({ date, dateString, id, option }) => {
+        // console.log(date, dateString, id, option)
+        // console.log(moment(date).unix())
+        // const test = moment(date).unix()
+        // console.log(moment.unix(test).format('MMM DD, YYYY'))
+
+        if (option === 'fromDate') {
+            handleSetFromDate({ id, fromDate: moment(date).unix() })
+        }
+
+        if (option === 'toDate') {
+            handleSetToDate({ id, toDate: moment(date).unix() })
+        }
     }
 
     const handleSelectHostel = ({ id }) => {
@@ -68,7 +79,7 @@ export const HostelList = () => {
                 <DatePicker
                     allowClear
                     disabledDate={disabledDate}
-                    onChange={(date, dateString) => handleOnChangeDate(date, dateString, text, record)}
+                    onChange={(date, dateString) => handleOnChangeDate({ date, dateString, id: record.id, option: 'fromDate' })}
                 />
             ),
         },
@@ -76,7 +87,13 @@ export const HostelList = () => {
             title: 'To',
             key: 'toDate',
             width: '200px',
-            render: (text, record) => <DatePicker allowClear disabledDate={disabledDate} />,
+            render: (text, record) => (
+                <DatePicker
+                    allowClear
+                    disabledDate={disabledDate}
+                    onChange={(date, dateString) => handleOnChangeDate({ date, dateString, id: record.id, option: 'toDate' })}
+                />
+            ),
         },
         {
             title: '',
