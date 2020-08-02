@@ -4,6 +4,7 @@ import { callGetHostels } from '../../features/hostel/hostel-api'
 import { useHostel } from '../../features/hostel/hostel-store'
 import { Table, Space, DatePicker } from 'antd'
 import moment from 'moment'
+import { history } from '../../history'
 
 export const HostelList = () => {
     const { handleSetHostels, hostelsData } = useHostel()
@@ -20,12 +21,17 @@ export const HostelList = () => {
         return current < moment().endOf('day')
     }
 
-    const handleSelectHostel = ({ data }) => {
+    const handleBookingHostel = ({ data }) => {
         console.log(data)
     }
 
     const handleOnChangeDate = (date, dateString, text, record) => {
         console.log(date, dateString, text, record)
+    }
+
+    const handleSelectHostel = ({ id }) => {
+        console.log('id', id)
+        history.push(`/hostel/${id}`)
     }
 
     const columns = [
@@ -40,6 +46,11 @@ export const HostelList = () => {
             dataIndex: 'name',
             key: 'name',
             width: '150px',
+            render: (text, record) => (
+                <a onClick={() => handleSelectHostel({ id: record.id })}>
+                    {text}
+                </a>
+            ),
         },
         {
             title: 'Description',
@@ -57,7 +68,13 @@ export const HostelList = () => {
             key: 'fromDate',
             width: '200px',
             render: (text, record) => (
-                <DatePicker allowClear disabledDate={disabledDate} onChange={ (date, dateString) => handleOnChangeDate(date, dateString, text, record) }/>
+                <DatePicker
+                    allowClear
+                    disabledDate={disabledDate}
+                    onChange={(date, dateString) =>
+                        handleOnChangeDate(date, dateString, text, record)
+                    }
+                />
             ),
         },
         {
@@ -76,7 +93,7 @@ export const HostelList = () => {
                 <Space size="middle">
                     <a
                         onClick={() =>
-                            handleSelectHostel({
+                            handleBookingHostel({
                                 data: {
                                     ...record,
                                 },

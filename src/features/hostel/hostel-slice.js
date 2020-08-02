@@ -15,7 +15,7 @@ export const hostelSlice = createSlice({
         },
         setDisplayHostel: (state, action) => {
             state.displayHostel = !isEmpty(state.data)
-                ? state.data.filter((hostel) => hostel.id === action.payload.id)
+                ? state.data.filter((hostel) => hostel.id === action.payload.id)[0]
                 : {}
         },
     },

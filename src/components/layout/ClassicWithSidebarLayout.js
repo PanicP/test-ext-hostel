@@ -136,7 +136,7 @@ export const ClassicWithSidebarLayout = ({ children }) => {
                     >
                         <div
                             className="site-layout-background"
-                            style={{ padding: 24, textAlign: 'center' }}
+                            style={{ padding: 24, textAlign: 'center', background: '#fff', }}
                         >
                             {children}
                         </div>
