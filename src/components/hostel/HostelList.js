@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useEffect } from 'react'
+import React, { useEffect, Fragment } from 'react'
 import { callGetHostels } from '../../features/hostel/hostel-api'
 import { useHostel } from '../../features/hostel/hostel-store'
 import { Table, Space, DatePicker } from 'antd'
@@ -7,7 +7,7 @@ import moment from 'moment'
 import { history } from '../../history'
 
 export const HostelList = () => {
-    const { handleSetHostels, hostelsData } = useHostel()
+    const { handleSetHostels, hostelsData, handleSetIsBooked } = useHostel()
 
     useEffect(() => {
         const getHostels = async () => {
@@ -23,6 +23,7 @@ export const HostelList = () => {
 
     const handleBookingHostel = ({ data }) => {
         console.log(data)
+        handleSetIsBooked({ id: data.id })
     }
 
     const handleOnChangeDate = (date, dateString, text, record) => {
@@ -46,11 +47,7 @@ export const HostelList = () => {
             dataIndex: 'name',
             key: 'name',
             width: '150px',
-            render: (text, record) => (
-                <a onClick={() => handleSelectHostel({ id: record.id })}>
-                    {text}
-                </a>
-            ),
+            render: (text, record) => <a onClick={() => handleSelectHostel({ id: record.id })}>{text}</a>,
         },
         {
             title: 'Description',
@@ -71,9 +68,7 @@ export const HostelList = () => {
                 <DatePicker
                     allowClear
                     disabledDate={disabledDate}
-                    onChange={(date, dateString) =>
-                        handleOnChangeDate(date, dateString, text, record)
-                    }
+                    onChange={(date, dateString) => handleOnChangeDate(date, dateString, text, record)}
                 />
             ),
         },
@@ -81,9 +76,7 @@ export const HostelList = () => {
             title: 'To',
             key: 'toDate',
             width: '200px',
-            render: (text, record) => (
-                <DatePicker allowClear disabledDate={disabledDate} />
-            ),
+            render: (text, record) => <DatePicker allowClear disabledDate={disabledDate} />,
         },
         {
             title: '',
@@ -100,7 +93,7 @@ export const HostelList = () => {
                             })
                         }
                     >
-                        Booking {record.name}
+                        {record.isBooked ? <Fragment>Unbooking {record.name}</Fragment> : <Fragment>Booking {record.name}</Fragment>}
                     </a>
                 </Space>
             ),
@@ -109,7 +102,7 @@ export const HostelList = () => {
 
     return (
         <div>
-            <Table dataSource={hostelsData} columns={columns} />
+            <Table dataSource={hostelsData} columns={columns} pagination={false} />
         </div>
     )
 }

@@ -18,9 +18,15 @@ export const hostelSlice = createSlice({
                 ? state.data.filter((hostel) => hostel.id === action.payload.id)[0]
                 : {}
         },
+        setIsBooked: (state, action) => {
+            state.data = state.data.map( hostel => ({
+                ...hostel,
+                isBooked: hostel.id === action.payload.id ? !hostel.isBooked : hostel.isBooked
+            }))
+        },
     },
 })
 
-export const { setHostels, setDisplayHostel } = hostelSlice.actions
+export const { setHostels, setDisplayHostel, setIsBooked } = hostelSlice.actions
 
 export default hostelSlice.reducer

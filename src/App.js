@@ -5,7 +5,6 @@ import {
     LoginPage,
     RegisterPage,
     HostelDetailPage,
-    HostelListPage,
     HostelBookingListPage,
 } from './pages'
 import { Router, Switch, Route } from 'react-router-dom'
@@ -20,7 +19,6 @@ const App = () => {
                 <Route exact path="/login" component={LoginPage} />
                 <Route exact path="/register" component={RegisterPage} />
                 <PrivateRoute exact path="/hostel/:id" component={HostelDetailPage} />
-                <PrivateRoute exact path="/hostel-list" component={HostelListPage} />
                 <PrivateRoute
                     exact
                     path="/hostel-booking-list"

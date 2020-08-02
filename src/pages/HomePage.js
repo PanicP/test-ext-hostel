@@ -8,8 +8,6 @@ export const HomePage = () => {
 
     return (
         <ClassicWithSidebarLayout>
-
-            <div>aaaaaa</div>
             { isAuthed ? <HostelList></HostelList> : <div></div>}
         </ClassicWithSidebarLayout>
     )

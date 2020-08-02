@@ -13,3 +13,9 @@ export const displayHostelSelector = () =>
         (state) => state.hostel.displayHostel,
         (data) => data
     )
+
+export const bookedHostelSelector = () =>
+    createSelector(
+        (state) => state.hostel.data,
+        (data) => data.filter((hostel) => hostel.isBooked)
+    )
