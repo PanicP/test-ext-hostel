@@ -1,5 +1,5 @@
-import React, { useState, useEffect, Fragment } from 'react'
-import { Form, Input, Button, Row, Col } from 'antd'
+import React, { useState } from 'react'
+import { Form, Button, Row, Col } from 'antd'
 import { TitleField } from './TitleField'
 import { FirstNameField } from './FirstNameField'
 import { LastNameField } from './LastNameField'
@@ -25,9 +25,7 @@ export const RegisterPanel = () => {
             history.push('/')
         }
     }
-
-    const onFinishFailed = (errorInfo) => {}
-
+    
     return isAuthed ? (
         <Redirect to="/"></Redirect>
     ) : (

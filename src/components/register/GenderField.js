@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Radio, Select } from 'antd'
+import { Form, Select } from 'antd'
 
 export const GenderField = () => {
     return (

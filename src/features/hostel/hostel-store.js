@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { useCallback, useMemo, useLayoutEffect, useEffect } from 'react'
-import { callGetHostels } from './hostel-api'
+import { useCallback, useMemo } from 'react'
 import { setHostels, setDisplayHostel, setIsBooked, setFromDate, setToDate } from './hostel-slice'
 import { hostelsSelector, displayHostelSelector, bookedHostelSelector } from './hostel-selector'
 

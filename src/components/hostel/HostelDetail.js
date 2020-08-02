@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, Fragment } from 'react'
 import { useHostel } from '../../features/hostel/hostel-store'
 import { callGetHostels } from '../../features/hostel/hostel-api'
@@ -19,7 +20,7 @@ export const HostelDetail = ({ id }) => {
         if (!isEmpty(hostelsData)) {
             handleSetDisplayHostel({ id })
         }
-    }, [hostelsData])
+    }, [hostelsData]) 
 
     return (
         <div>

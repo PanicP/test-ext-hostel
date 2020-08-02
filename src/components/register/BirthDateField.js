@@ -1,6 +1,6 @@
 import React from 'react'
-import { Form, Button, DatePicker } from 'antd'
-import moment, { Moment } from 'moment'
+import { Form, DatePicker } from 'antd'
+import moment from 'moment'
 
 export const BirthDateField = () => {
     const disabledDate = (current) => {
