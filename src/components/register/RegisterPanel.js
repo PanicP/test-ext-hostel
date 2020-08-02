@@ -71,13 +71,13 @@ export const RegisterPanel = () => {
                 </Col>
             </Row>
             <Row gutter={16}>
-                <Col span={8}>
+                <Col span={24}>
                     <PhoneNumberField />
                 </Col>
             </Row>
             <Row gutter={16}>
                 <Col span={24}>
-                    <Button htmlType="submit" color="primary" type="primary">
+                    <Button className="hostel-regis-submit-button" htmlType="submit" color="primary" type="primary">
                         Submit
                     </Button>
                 </Col>

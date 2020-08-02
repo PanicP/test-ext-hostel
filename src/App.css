@@ -10,6 +10,106 @@
     border-bottom: 5px solid lightgrey;
 }
 
+.layout-sider {
+    overflow: auto;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    z-index: 2;
+}
+
+.ant-layout .site-layout {
+    margin-left: 80 !important;
+}
+
+.layout-container-header {
+    background: #fff;
+    padding: 0;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.layout-container-header-desc {
+    width: fit-content;
+    margin: 0 75px 0 0;
+    font-size: 30px;
+}
+
+.layout-container-content {
+    margin: 64px 0 0;
+    overflow: initial;
+}
+
+.site-layout {
+    margin-left: 80px;
+}
+
+.site-layout-background {
+    padding: 24px;
+    text-align: center;
+    background: #fff;
+}
+
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+    background-color: white !important;
+}
+
+/* Regis*/
+
+.hostel-regis-phone-container {
+    display: inline-block;
+}
+
+.hostel-regis-phone-selection {
+    width: 100px;
+}
+
+.hostel-regis-phone-input {
+    width: 100%;
+}
+
+.hostel-regis-submit-button {
+    width: 100%;
+}
+
+/* Image */
+
+.hostel-carousal-image {
+    width: 100%;
+    height: 100%
+}
+
+.hostel-detail-image-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.hostel-detail-image {
+    width: 300px;
+}
+
+/* Map */
+
+.hostel-location-map-container {
+    color: white;
+    background: grey;
+    padding: 15px 10px;
+    display: inline-flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    transform: translate(-50% -50%);
+}
+
+.hostel-location-map {
+    width: auto;
+    height: 500px;
+}
 
 /* uncate */
 
@@ -17,19 +117,12 @@
     margin: 30px 0;
 }
 
-/*  */
-
-.map-container {
-    width: 1000px;
-    height: 500px;
-}
-
-.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
-    background-color: white !important;
-}
-
 .anticon {
     color: #595959;
+}
+
+.anticon-check-circle {
+    color: #51C51A;
 }
 
 .ant-carousel .slick-slide {
@@ -42,3 +135,7 @@
 .ant-carousel .slick-slide h3 {
     color: #fff;
 }
+
+
+/*  */
+

@@ -8,12 +8,9 @@ export const HostelCarousel = () => {
             {hostelIDset.map((id) => (
                 <div>
                     <img
+                        className="hostel-carousal-image"
                         src={require(`../../static/pictures/${id}/1.jpg`)}
                         alt="unavailable"
-                        style={{
-                            width: '100%',
-                            height: '100%',
-                        }}
                     />
                 </div>
             ))}

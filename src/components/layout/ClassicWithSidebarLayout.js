@@ -1,15 +1,9 @@
 import React, { useState, Fragment } from 'react'
 import { Layout, Menu } from 'antd'
-import {
-    HomeOutlined,
-    BookOutlined,
-    EditOutlined,
-    LoginOutlined,
-    LogoutOutlined,
-} from '@ant-design/icons'
+import { HomeOutlined, BookOutlined, EditOutlined, LoginOutlined, LogoutOutlined } from '@ant-design/icons'
 import { history } from '../../history'
 
-const { Header, Content, Footer, Sider } = Layout
+const { Header, Content, Sider } = Layout
 
 export const ClassicWithSidebarLayout = ({ children }) => {
     const [isCollapsed, setIsCollapsed] = useState(true)
@@ -19,25 +13,15 @@ export const ClassicWithSidebarLayout = ({ children }) => {
         <Fragment>
             <Layout>
                 <Sider
+                    className="layout-sider"
                     theme="light"
                     collapsible
                     collapsed={isCollapsed}
                     onCollapse={() => setIsCollapsed(!isCollapsed)}
-                    style={{
-                        overflow: 'auto',
-                        height: '100vh',
-                        position: 'fixed',
-                        left: 0,
-                        zIndex: 2,
-                    }}
                 >
                     <div className="logo" />
                     {!isAuthed ? (
-                        <Menu
-                            theme="light"
-                            mode="inline"
-                            defaultSelectedKeys={['4']}
-                        >
+                        <Menu theme="light" mode="inline" defaultSelectedKeys={['4']}>
                             <Menu.Item
                                 key="1"
                                 icon={<HomeOutlined />}
@@ -68,11 +52,7 @@ export const ClassicWithSidebarLayout = ({ children }) => {
                             </Menu.Item>
                         </Menu>
                     ) : (
-                        <Menu
-                            theme="light"
-                            mode="inline"
-                            defaultSelectedKeys={['4']}
-                        >
+                        <Menu theme="light" mode="inline" defaultSelectedKeys={['4']}>
                             <Menu.Item
                                 key="1"
                                 icon={<HomeOutlined />}
@@ -106,46 +86,13 @@ export const ClassicWithSidebarLayout = ({ children }) => {
                     )}
                 </Sider>
 
-                <Layout className="site-layout" style={{ marginLeft: 80 }}>
-                    <Header
-                        style={{
-                            background: '#fff',
-                            padding: 0,
-                            position: 'fixed',
-                            zIndex: 1,
-                            width: '100%',
-                            display: 'flex',
-                            justifyContent: 'center',
-                        }}
-                    >
-                        <p
-                            style={{
-                                width: 'fit-content',
-                                margin: '0 75px 0 0',
-                                fontSize: '30px',
-                            }}
-                        >
-                            Hostels Picker
-                        </p>
+                <Layout className="site-layout">
+                    <Header className="layout-container-header">
+                        <p className="layout-container-header-desc">Hostels Picker</p>
                     </Header>
-                    <Content
-                        style={{
-                            margin: '64px 0 0',
-                            overflow: 'initial',
-                        }}
-                    >
-                        <div
-                            className="site-layout-background"
-                            style={{ padding: 24, textAlign: 'center', background: '#fff', }}
-                        >
-                            {children}
-                        </div>
+                    <Content className="layout-container-content">
+                        <div className="site-layout-background">{children}</div>
                     </Content>
-                    {/* <Footer
-                        style={{ textAlign: 'center', border: '2px solid red' }}
-                    >
-                        Footer
-                    </Footer> */}
                 </Layout>
             </Layout>
         </Fragment>

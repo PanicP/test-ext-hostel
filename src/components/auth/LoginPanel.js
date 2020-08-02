@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Form, Input, Button } from 'antd'
+import { Form, Input, Button, Row, Col } from 'antd'
 import { history } from '../../history'
 import { Redirect } from 'react-router-dom'
 import { callAuth } from '../../features/auth/auth-api'
@@ -29,53 +29,69 @@ export const LoginPanel = () => {
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
         >
-            <Form.Item
-                label="Username"
-                name="username"
-                rules={[
-                    {
-                        required: true,
-                        message: 'Please input your username!',
-                    },
-                ]}
-            >
-                <Input />
-            </Form.Item>
-
-            <Form.Item
-                label="Password"
-                name="password"
-                rules={[
-                    {
-                        required: true,
-                        message: 'Please input your password!',
-                    },
-                ]}
-            >
-                <Input.Password />
-            </Form.Item>
-
-            <Form.Item {...tailLayout}>
-                <Button type="primary" htmlType="submit">
-                    Submit
-                </Button>
-            </Form.Item>
+            <Row gutter={16}>
+                <Col span={7} />
+                <Col span={8}>
+                    <Form.Item
+                        label="Username"
+                        name="username"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input your username!',
+                            },
+                        ]}
+                    >
+                        <Input />
+                    </Form.Item>
+                </Col>
+                <Col span={9} />
+            </Row>
+            <Row gutter={16}>
+                <Col span={7} />
+                <Col span={8}>
+                    <Form.Item
+                        label="Password"
+                        name="password"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input your password!',
+                            },
+                        ]}
+                    >
+                        <Input.Password />
+                    </Form.Item>
+                </Col>
+                <Col span={9} />
+            </Row>
+            <Row gutter={16}>
+                <Col span={7} />
+                <Col span={8}>
+                    <Form.Item {...tailLayout}>
+                        <Button className="hostel-regis-submit-button" type="primary" htmlType="submit">
+                            Submit
+                        </Button>
+                    </Form.Item>
+                </Col>
+                <Col span={9} />
+            </Row>
         </Form>
     )
 }
 
 const layout = {
     labelCol: {
-        span: 3,
+        span: 6,
     },
     wrapperCol: {
-        span: 21,
+        span: 18,
     },
 }
 
 const tailLayout = {
     wrapperCol: {
-        offset: 3,
-        span: 21,
+        offset: 6,
+        span: 18,
     },
 }

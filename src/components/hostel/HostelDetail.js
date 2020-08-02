@@ -5,12 +5,7 @@ import { isEmpty } from 'lodash'
 import { HostelLocation } from './HostelLocation'
 
 export const HostelDetail = ({ id }) => {
-    const {
-        displayHostelData,
-        hostelsData,
-        handleSetHostels,
-        handleSetDisplayHostel,
-    } = useHostel()
+    const { displayHostelData, hostelsData, handleSetHostels, handleSetDisplayHostel } = useHostel()
 
     useEffect(() => {
         const getHostels = async () => {
@@ -31,34 +26,10 @@ export const HostelDetail = ({ id }) => {
             {console.log('display', displayHostelData)}
             {!isEmpty(displayHostelData) && (
                 <Fragment>
-                    <div
-                        style={{
-                            display: 'flex',
-                            flexDirection: 'row',
-                            justifyContent: 'center',
-                        }}
-                    >
-                        <img
-                            src={require(`../../static/pictures/${id}/1.jpg`)}
-                            alt="unavailable"
-                            style={{
-                                width: '300px',
-                            }}
-                        />
-                        <img
-                            src={require(`../../static/pictures/${id}/2.jpg`)}
-                            alt="unavailable"
-                            style={{
-                                width: '300px',
-                            }}
-                        />
-                        <img
-                            src={require(`../../static/pictures/${id}/3.jpg`)}
-                            alt="unavailable"
-                            style={{
-                                width: '300px',
-                            }}
-                        />
+                    <div className="hostel-detail-image-container">
+                        <img className="hostel-detail-image" src={require(`../../static/pictures/${id}/1.jpg`)} alt="unavailable" />
+                        <img className="hostel-detail-image" src={require(`../../static/pictures/${id}/2.jpg`)} alt="unavailable" />
+                        <img className="hostel-detail-image" src={require(`../../static/pictures/${id}/3.jpg`)} alt="unavailable" />
                     </div>
 
                     <h2>{displayHostelData.name}</h2>
