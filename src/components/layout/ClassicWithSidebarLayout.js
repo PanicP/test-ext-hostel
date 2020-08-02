@@ -132,7 +132,6 @@ export const ClassicWithSidebarLayout = ({ children }) => {
                         style={{
                             margin: '64px 0 0',
                             overflow: 'initial',
-                            border: '2px solid orange',
                         }}
                     >
                         <div

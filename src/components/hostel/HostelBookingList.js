@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, {  Fragment } from 'react'
+import React, { Fragment } from 'react'
 import { useHostel } from '../../features/hostel/hostel-store'
 import { Table, Space } from 'antd'
 import moment from 'moment'
 import { history } from '../../history'
+import { isEmpty } from 'lodash'
 
 export const HostelBookingList = () => {
     const { bookedHostelData, handleSetIsBooked } = useHostel()
@@ -47,13 +48,13 @@ export const HostelBookingList = () => {
             title: 'From',
             key: 'fromDate',
             width: '200px',
-            render: (text, record) => <p>{moment.unix(record.fromDate).format('MMM DD, YYYY')}</p>,
+            render: (text, record) => <p>{!isEmpty(record.fromDate) ? moment.unix(record.fromDate).format('MMM DD, YYYY') : ''}</p>,
         },
         {
             title: 'To',
             key: 'toDate',
             width: '200px',
-            render: (text, record) => <p>{moment.unix(record.toDate).format('MMM DD, YYYY')}</p>,
+            render: (text, record) => <p>{!isEmpty(record.fromDate) ? moment.unix(record.fromDate).format('MMM DD, YYYY') : ''}</p>,
         },
         {
             title: '',
