@@ -6,9 +6,6 @@ import { hostelsSelector, displayHostelSelector, bookedHostelSelector } from './
 export const useHostel = () => {
     const dispatch = useDispatch()
 
-    // const hostelsData = useSelector(hostelsSelector)
-    // const hostelsData = useSelector(state => state.hostel.data)
-
     const hostelsData = useSelector(useMemo(hostelsSelector, [dispatch]))
     const displayHostelData = useSelector(useMemo(displayHostelSelector, [dispatch]))
     const bookedHostelData = useSelector(useMemo(bookedHostelSelector, [dispatch]))
