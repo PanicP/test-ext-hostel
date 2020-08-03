@@ -28,10 +28,6 @@ export const HostelList = () => {
     }
 
     const handleOnChangeDate = ({ date, dateString, id, option }) => {
-        // console.log(date, dateString, id, option)
-        // console.log(moment(date).unix())
-        // const test = moment(date).unix()
-        // console.log(moment.unix(test).format('MMM DD, YYYY'))
 
         if (option === 'fromDate') {
             handleSetFromDate({ id, fromDate: moment(date).unix() })
@@ -62,12 +58,7 @@ export const HostelList = () => {
             render: (text, record) => <a onClick={() => handleSelectHostel({ id: record.id })}>{text}</a>,
         },
         {
-            title: 'Description',
-            dataIndex: 'desc',
-            key: 'desc',
-        },
-        {
-            title: 'Price',
+            title: 'Price (THB)',
             dataIndex: 'price',
             key: 'price',
             width: '100px',

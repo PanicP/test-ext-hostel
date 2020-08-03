@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from 'react'
-import { Layout, Menu } from 'antd'
+import { Layout, Menu, Row, Col } from 'antd'
 import { HomeOutlined, BookOutlined, EditOutlined, LoginOutlined, LogoutOutlined } from '@ant-design/icons'
 import { history } from '../../history'
 
@@ -88,12 +88,31 @@ export const ClassicWithSidebarLayout = ({ children }) => {
 
                 <Layout className="site-layout">
                     <Header className="layout-container-header">
-                        <p className="layout-container-header-desc">Hostels Picker</p>
+                        <Row gutter={16}>
+                            <Col span={4} />
+                            <Col span={4} className="navbar-left-button">Hostels Picker</Col>
+                            <Col span={8} />
+                            <Col span={2} className="navbar-right-button">Register</Col>
+                            <Col span={2} className="navbar-right-button">Sign In</Col>
+                            <Col span={4} />
+                        </Row>
                     </Header>
                     <Content className="layout-container-content">
-                        <div className="site-layout-background">{children}</div>
+                        <Row gutter={16}>
+                            <Col span={4} />
+                            <Col span={16}>
+                                <div className="site-layout-background">{children}</div>
+                            </Col>
+                            <Col span={4} />
+                        </Row>
                     </Content>
-                    <Footer className="layout-container-footer">Test</Footer>
+                    <Footer className="layout-container-footer">
+                        <Row gutter={16}>
+                            <Col span={4} />
+                            <Col span={16}>Hostels Picker by PanicP</Col>
+                            <Col span={4} />
+                        </Row>
+                    </Footer>
                 </Layout>
             </Layout>
         </Fragment>

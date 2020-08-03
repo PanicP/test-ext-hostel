@@ -8,7 +8,7 @@ export const GenderField = () => {
             label="Gender"
             rules={[{ required: true, message: 'Gender is required!' }]}
         >
-            <Select placeholder="Select Title">
+            <Select placeholder="Select Gender">
                 <Select.Option value="male.">Male</Select.Option>
                 <Select.Option value="female.">Female</Select.Option>
                 <Select.Option value="unisex">Unisex</Select.Option>

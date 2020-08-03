@@ -25,16 +25,11 @@ export const RegisterPanel = () => {
             history.push('/')
         }
     }
-    
+
     return isAuthed ? (
         <Redirect to="/"></Redirect>
     ) : (
-        <Form
-            form={form}
-            name="advanced_search"
-            className="ant-advanced-search-form"
-            onFinish={onFinish}
-        >
+        <Form form={form} name="advanced_search" className="ant-advanced-search-form" onFinish={onFinish}>
             <Row gutter={16}>
                 <Col span={8}>
                     <UserNameField />
@@ -47,30 +42,30 @@ export const RegisterPanel = () => {
                 </Col>
             </Row>
             <Row gutter={16}>
-                <Col span={4}>
+                <Col span={6}>
                     <TitleField />
                 </Col>
-                <Col span={10}>
+                <Col span={9}>
                     <FirstNameField />
                 </Col>
-                <Col span={10}>
+                <Col span={9}>
                     <LastNameField />
                 </Col>
             </Row>
             <Row gutter={16}>
-                <Col span={4}>
+                <Col span={7}>
                     <BirthDateField />
                 </Col>
-                <Col span={10}>
-                    <NationalityField />
-                </Col>
-                <Col span={10}>
-                    <GenderField />
+                <Col span={17}>
+                    <PhoneNumberField />
                 </Col>
             </Row>
             <Row gutter={16}>
-                <Col span={24}>
-                    <PhoneNumberField />
+                <Col span={12}>
+                    <GenderField />
+                </Col>
+                <Col span={12}>
+                    <NationalityField />
                 </Col>
             </Row>
             <Row gutter={16}>

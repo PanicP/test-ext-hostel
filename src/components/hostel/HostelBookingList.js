@@ -34,11 +34,6 @@ export const HostelBookingList = () => {
             render: (text, record) => <a onClick={() => handleSelectHostel({ id: record.id })}>{text}</a>,
         },
         {
-            title: 'Description',
-            dataIndex: 'desc',
-            key: 'desc',
-        },
-        {
             title: 'Price',
             dataIndex: 'price',
             key: 'price',

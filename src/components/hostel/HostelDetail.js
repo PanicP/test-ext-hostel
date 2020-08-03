@@ -33,9 +33,9 @@ export const HostelDetail = ({ id }) => {
                         <img className="hostel-detail-image" src={require(`../../static/pictures/${id}/3.jpg`)} alt="unavailable" />
                     </div>
 
-                    <h2>{displayHostelData.name}</h2>
+                    <h2 className="hostel-detail-name">{displayHostelData.name}</h2>
                     <h3>{displayHostelData.price} THB</h3>
-                    <p>{displayHostelData.desc}</p>
+                    <p className="hostel-detail-desc">{displayHostelData.desc}</p>
                     <HostelLocation
                         lat={displayHostelData.location.lat}
                         lng={displayHostelData.location.lng}

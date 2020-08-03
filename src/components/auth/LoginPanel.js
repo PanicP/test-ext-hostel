@@ -30,8 +30,8 @@ export const LoginPanel = () => {
             onFinishFailed={onFinishFailed}
         >
             <Row gutter={16}>
-                <Col span={7} />
-                <Col span={8}>
+                <Col span={3} />
+                <Col span={16}>
                     <Form.Item
                         label="Username"
                         name="username"
@@ -45,11 +45,11 @@ export const LoginPanel = () => {
                         <Input />
                     </Form.Item>
                 </Col>
-                <Col span={9} />
+                <Col span={5} />
             </Row>
             <Row gutter={16}>
-                <Col span={7} />
-                <Col span={8}>
+                <Col span={3} />
+                <Col span={16}>
                     <Form.Item
                         label="Password"
                         name="password"
@@ -63,18 +63,18 @@ export const LoginPanel = () => {
                         <Input.Password />
                     </Form.Item>
                 </Col>
-                <Col span={9} />
+                <Col span={5} />
             </Row>
             <Row gutter={16}>
-                <Col span={7} />
-                <Col span={8}>
+                <Col span={3} />
+                <Col span={16}>
                     <Form.Item {...tailLayout}>
                         <Button className="hostel-regis-submit-button" type="primary" htmlType="submit">
                             Submit
                         </Button>
                     </Form.Item>
                 </Col>
-                <Col span={9} />
+                <Col span={5} />
             </Row>
         </Form>
     )
