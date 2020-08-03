@@ -81,6 +81,10 @@ body {
     font-weight: bold;
 }
 
+.navbar-button-text {
+    cursor: pointer;
+}
+
 /* Regis*/
 
 .hostel-regis-phone-container {
@@ -114,6 +118,7 @@ body {
 
 .hostel-detail-image {
     width: 300px;
+    margin: 0 5px;
 }
 
 /* Map */

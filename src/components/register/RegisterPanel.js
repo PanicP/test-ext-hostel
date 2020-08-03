@@ -13,17 +13,21 @@ import { ConfirmPasswordField } from './ConfirmPasswordField'
 import { history } from '../../history'
 import { Redirect } from 'react-router-dom'
 import { callRegis } from '../../features/auth/auth-api'
+import { useUtil } from '../../features/util/util-store'
 
 export const RegisterPanel = () => {
     const [form] = Form.useForm()
+    const { handleSetIsLoading } = useUtil()
     const [isAuthed, setIsAuthed] = useState(localStorage.getItem('authToken'))
 
     const onFinish = async (values) => {
+        handleSetIsLoading({ isLoading: true })
         const isLoginSucceeded = await callRegis({ data: values })
         setIsAuthed(isLoginSucceeded)
         if (isLoginSucceeded) {
             history.push('/')
         }
+        handleSetIsLoading({ isLoading: false })
     }
 
     return isAuthed ? (

@@ -3,16 +3,21 @@ import { Form, Input, Button, Row, Col } from 'antd'
 import { history } from '../../history'
 import { Redirect } from 'react-router-dom'
 import { callAuth } from '../../features/auth/auth-api'
+import { Loading } from '../util'
+import { useUtil } from '../../features/util/util-store'
 
 export const LoginPanel = () => {
+    const { handleSetIsLoading } = useUtil()
     const [isAuthed, setIsAuthed] = useState(localStorage.getItem('authToken'))
 
     const onFinish = async (values) => {
+        handleSetIsLoading({ isLoading: true })
         const isLoginSucceeded = await callAuth()
         setIsAuthed(isLoginSucceeded)
         if (isLoginSucceeded) {
             history.push('/')
         }
+        handleSetIsLoading({ isLoading: false })
     }
 
     const onFinishFailed = (errorInfo) => {}
@@ -29,6 +34,7 @@ export const LoginPanel = () => {
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
         >
+            <Loading />
             <Row gutter={16}>
                 <Col span={3} />
                 <Col span={16}>
