@@ -4,7 +4,7 @@ import { HomeOutlined, BookOutlined, EditOutlined, LoginOutlined, LogoutOutlined
 import { history } from '../../history'
 import { ClassicHeader } from './ClassicHeader'
 
-const { Header, Content, Sider, Footer } = Layout
+const { Content, Sider, Footer } = Layout
 
 export const ClassicWithSidebarLayout = ({ children }) => {
     const [isCollapsed, setIsCollapsed] = useState(true)
