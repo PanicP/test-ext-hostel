@@ -3,7 +3,7 @@ import { Layout, Menu } from 'antd'
 import { HomeOutlined, BookOutlined, EditOutlined, LoginOutlined, LogoutOutlined } from '@ant-design/icons'
 import { history } from '../../history'
 
-const { Header, Content, Sider } = Layout
+const { Header, Content, Sider, Footer } = Layout
 
 export const ClassicWithSidebarLayout = ({ children }) => {
     const [isCollapsed, setIsCollapsed] = useState(true)
@@ -93,6 +93,7 @@ export const ClassicWithSidebarLayout = ({ children }) => {
                     <Content className="layout-container-content">
                         <div className="site-layout-background">{children}</div>
                     </Content>
+                    <Footer className="layout-container-footer">Test</Footer>
                 </Layout>
             </Layout>
         </Fragment>

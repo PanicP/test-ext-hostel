@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.css'
-import { HomePage, LoginPage, RegisterPage, HostelDetailPage, HostelBookingListPage } from './pages'
+import { HomePage, LoginPage, RegisterPage, HostelDetailPage, HostelBookingListPage, NotFoundPage } from './pages'
 import { Router, Switch, Route } from 'react-router-dom'
 import { history } from './history'
 import { PrivateRoute } from './components/auth'
@@ -14,6 +14,7 @@ const App = () => {
                 <Route exact path="/register" component={RegisterPage} />
                 <PrivateRoute exact path="/hostel/:id" component={HostelDetailPage} />
                 <PrivateRoute exact path="/hostel-booking-list" component={HostelBookingListPage} />
+                <Route component={NotFoundPage} />
             </Switch>
         </Router>
     )
